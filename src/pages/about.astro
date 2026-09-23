@@ -1,12 +1,16 @@
 ---
+import { getEntry } from 'astro:content';
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
+
+const author = await getEntry('authors', 'john-doe');
+if (!author) throw new Error('Author profile not found: john-doe');
 ---
 
 <Layout
 	title="About Me"
 	description="Lorem ipsum dolor sit amet"
-	author="John Doe"
+	author={author.data}
 	pubDate={new Date('August 08 2021')}
 	heroImage={AboutHeroImage}
 >

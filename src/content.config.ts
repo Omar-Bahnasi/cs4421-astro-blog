@@ -15,11 +15,9 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
-			author: z.string(),
 		}),
 });
 
-const authors = defineCollection({
 const authors = defineCollection({
 	loader: glob({
 		base: './src/content/authors',
